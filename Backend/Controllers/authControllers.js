@@ -50,18 +50,24 @@ const login = async (req, res) => {
 
     // username validation
     if (!userValid) {
-      return res.status(400).json({ message: "Invalid username" });
+      return res.status(400).json({ error: "Invalid username" });
     }
 
     // password validation
     const validPassword = await bcrypt.compare(password, userValid.password);
     if (!validPassword) {
-      return res.status(400).json({ message: "Invalid password" });
+      return res.status(400).json({ error: "Invalid password" });
     }
 
     // create jwt token
     await getJwtToken(userValid._id, res);
-    res.status(200).json({ message: "User logged in successfully" });
+
+    res.status(200).json({
+      _id: userValid._id,
+      fullName: userValid.fullName,
+      username: userValid.username,
+      profilePic: userValid.profilePic,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

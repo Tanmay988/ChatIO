@@ -12,12 +12,14 @@ require("./db/conn");
 const PORT = process.env.PORT || 5000;
 
 //connect to frontend
-const cors = require("cors");
+// const cors = require("cors");
+const bodyParser = require("body-parser");
 
 //middleware
+// app.use(cors()); //allow request from all origin
+app.use(bodyParser.json()); //parse application/json
 app.use(express.json()); //parse json data
 app.use(cookieParser()); //parse cookie data
-app.use(cors()); //allow request from all origin
 
 //routes
 app.use("/api/auth", router);

@@ -1,21 +1,31 @@
 import React from "react";
+import useConversation from "../../Zustand/useConversation";
+const ConversationUser = (props) => {
+  const { conversation, lastidx } = props;
+  const { fullname, profilePic } = conversation;
+  const { selectedConversation, setSelectedConversation } = useConversation();
 
-const ConversationUser = () => {
+  const isSelected = selectedConversation?._id === conversation._id;
   return (
     <>
-      <div className="flex gap-4  p-2 items-center  hover:bg-sky-400 cursor-pointer">
+      <div
+        className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
+				${isSelected ? "bg-sky-500" : ""}
+			`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
         <div>
           <div className="avatar online">
             <div className="w-12 rounded-full">
-              <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src={profilePic} />
             </div>
           </div>
         </div>
         <div>
-          <h3 className="text-gray-300 font-semibold">Full name</h3>
+          <h3 className="text-gray-300 font-semibold">{fullname}</h3>
         </div>
       </div>
-      <div className="divider p-0 m-0 h-1 "></div>
+      {!lastidx && <div className="divider p-0 m-0 h-1 "></div>}
     </>
   );
 };

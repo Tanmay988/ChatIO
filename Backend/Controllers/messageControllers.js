@@ -34,7 +34,7 @@ const sendMessage = async (req, res) => {
     //save message and conversation parallely
     await Promise.all([newMessage.save(), conversation.save()]);
 
-    res.status(200).json({ message: "Message sent successfully" });
+    res.status(200).json(newMessage);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
