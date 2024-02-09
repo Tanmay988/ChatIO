@@ -16,7 +16,7 @@ const MessageInput = () => {
   return (
     <>
       <div className="flex items-center justify-center py-2 gap-1">
-        <form onSubmit={submitHandeler}>
+        <form onSubmit={submitHandeler} className="flex gap-1">
           <input
             type="text"
             placeholder="Type here..."
