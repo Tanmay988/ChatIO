@@ -7,7 +7,6 @@ const Message = (props) => {
   const { message } = props;
   const { selectedConversation } = useConversation();
   const { authUser } = useAuth();
-
   const isSender = message.senderID === authUser._id;
   const profilepic = isSender
     ? authUser.profilePic
@@ -15,7 +14,6 @@ const Message = (props) => {
   const chats = isSender ? " chat-end" : " chat-start";
   const bubbleBgColor = isSender ? "bg-blue-500" : "";
   const formattedTime = extractTime(message.createdAt);
-  const shakeClass = message.shouldShake ? "shake" : "";
 
   return (
     <>
@@ -26,7 +24,7 @@ const Message = (props) => {
           </div>
         </div>
         <div
-          className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2`}
+          className={`chat-bubble text-white ${bubbleBgColor}  pb-2`}
         >
           {message.message}
         </div>

@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
+
+//socket
+const { app, server } = require("./Socket/socket");
 
 //import routes
 const router = require("./Routes/authRoutes");
@@ -27,6 +29,6 @@ app.use("/api/message", route);
 app.use("/api/users", getUsers);
 
 //listen
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
