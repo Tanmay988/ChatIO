@@ -1,7 +1,7 @@
 import React from "react";
-import SearchInput from "../../Components/Sidebar/SearchInput";
 import Conversations from "../../Components/SideBar/Conversations";
 import LogoutButton from "../../Components/SideBar/LogoutButton";
+import SearchInput from "../../Components/Sidebar/SearchInput";
 
 const SideBar = () => {
   return (
